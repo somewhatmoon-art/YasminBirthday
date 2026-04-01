@@ -26,22 +26,11 @@ body {
   overflow: hidden; /* scroll locked initially */
 }
 
-section {
-  min-height: 100vh;
-  padding: 40px 20px;
-}
+section { min-height: 100vh; padding: 40px 20px; }
 
 /* 🔒 LOCK SCREEN */
-#lock-screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h2 {
-  font-weight: 500;
-}
-
+#lock-screen { display: flex; flex-direction: column; justify-content: center; }
+h2 { font-weight: 500; }
 #display {
   font-size: 2rem;
   margin: 20px auto;
@@ -54,15 +43,12 @@ h2 {
   backdrop-filter: blur(10px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
-
-/* keypad */
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 80px);
   gap: 15px;
   justify-content: center;
 }
-
 .keypad button {
   padding: 18px;
   font-size: 1.3rem;
@@ -74,10 +60,7 @@ h2 {
   cursor: pointer;
   transition: 0.2s;
 }
-
-.keypad button:hover {
-  transform: scale(1.1);
-}
+.keypad button:hover { transform: scale(1.1); }
 
 /* 🌸 POLAROID GALLERY */
 .polaroid-gallery {
@@ -87,7 +70,6 @@ h2 {
   gap: 20px;
   margin-top: 30px;
 }
-
 .polaroid {
   width: 140px;
   background: white;
@@ -97,47 +79,28 @@ h2 {
   transform: rotate(var(--rotate));
   transition: 0.3s;
 }
-
 .polaroid:nth-child(1) { --rotate: -5deg; }
 .polaroid:nth-child(2) { --rotate: 4deg; }
 .polaroid:nth-child(3) { --rotate: -3deg; }
 .polaroid:nth-child(4) { --rotate: 5deg; }
 .polaroid:nth-child(5) { --rotate: -4deg; }
 .polaroid:nth-child(6) { --rotate: 3deg; }
-
-.polaroid img {
-  width: 100%;
-  border-radius: 6px;
-}
-
+.polaroid img { width: 100%; border-radius: 6px; }
 .polaroid p {
   font-size: 0.8rem;
   margin-top: 8px;
   font-family: "Comic Sans MS", cursive;
 }
+.polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 10; }
 
-.polaroid:hover {
-  transform: scale(1.1) rotate(0deg);
-  z-index: 10;
-}
-
-.swipe-text {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  opacity: 0.7;
-  animation: float 1.5s infinite;
-}
-
-@keyframes float {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-10px);}
-}
+.swipe-text { margin-top: 20px; font-size: 1.1rem; opacity: 0.7; animation: float 1.5s infinite; }
+@keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
 /* 🎵 CUTE MUSIC PLAYER */
 .cute-player {
   max-width: 320px;
   margin: 20px auto;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255,255,255,0.8);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 15px;
@@ -145,24 +108,16 @@ h2 {
   text-align: center;
   font-family: "Comic Sans MS", cursive;
 }
-
 .cute-player p {
   margin: 0 0 10px 0;
   font-size: 1rem;
   color: var(--player-pink);
   font-weight: 500;
 }
-
-audio {
-  width: 100%;
-  border-radius: 12px;
-}
+audio { width: 100%; border-radius: 12px; }
 
 /* 💌 LETTER */
-#music-section {
-  margin-top: 40px;
-}
-
+#music-section { margin-top: 40px; }
 .letter {
   max-width: 420px;
   margin: auto;
@@ -174,13 +129,46 @@ audio {
   font-family: "Comic Sans MS", cursive;
 }
 
-.fade-in {
-  animation: fade 1s ease;
+.fade-in { animation: fade 1s ease; }
+@keyframes fade { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+/* ❤️ Floating hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: floatHeart linear infinite;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+.heart::before { top: -10px; left: 0; }
+.heart::after { left: 10px; top: 0; }
+@keyframes floatHeart {
+  0% { transform: translateY(0) rotate(45deg); opacity:1; }
+  100% { transform: translateY(-600px) rotate(45deg); opacity:0; }
 }
 
-@keyframes fade {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+/* 🌟 Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #ff6eb4;
+  z-index: 9999;
+  top: -10px;
+  animation: fall 3s linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
 }
 </style>
 </head>
@@ -190,9 +178,7 @@ audio {
 <!-- 🔒 LOCK SCREEN -->
 <section id="lock-screen">
   <h2>enter the secret code 💌</h2>
-
   <input type="text" id="display" disabled placeholder="••••">
-
   <div class="keypad">
     <button onclick="press('1')">1</button>
     <button onclick="press('2')">2</button>
@@ -212,41 +198,20 @@ audio {
 <!-- 🖼️ POLAROID GALLERY -->
 <section id="gallery" style="display:none;">
   <h2>our memories 💖</h2>
-
   <div class="polaroid-gallery">
-    <div class="polaroid">
-      <img src="images/yasmin.jpg">
-      <p> you've grown up a lot</p>
-    </div>
-    <div class="polaroid">
-      <img src="images/yasminn.jpg">
-      <p>look it's us </p>
-    </div>
-    <div class="polaroid">
-      <img src="images/yasminnn.jpg">
-      <p>also us</p>
-    </div>
-    <div class="polaroid">
-      <img src="images/yasminnnn.jpg">
-      <p>you can't get rid of me</p>
-    </div>
-    <div class="polaroid">
-      <img src="images/yasminnnnn.jpg">
-      <p>still you and me </p>
-    </div>
-    <div class="polaroid">
-      <img src="images/yasminnnnnn.jpg">
-      <p>happy 18th 🎂✨</p>
-    </div>
+    <div class="polaroid"><img src="images/yasmin.jpg"><p>my favorite girl 💖</p></div>
+    <div class="polaroid"><img src="images/yasminn.jpg"><p>so pretty here 🥺</p></div>
+    <div class="polaroid"><img src="images/yasminnn.jpg"><p>this memory >>></p></div>
+    <div class="polaroid"><img src="images/yasminnnn.jpg"><p>never forgetting this 😭</p></div>
+    <div class="polaroid"><img src="images/yasminnnnn.jpg"><p>you + me always 💕</p></div>
+    <div class="polaroid"><img src="images/yasminnnnnn.jpg"><p>happy 18th 🎂✨</p></div>
   </div>
-
   <p class="swipe-text">⬆️ swipe up</p>
 </section>
 
 <!-- 🎵 MUSIC + LETTER -->
 <section id="music-section" style="display:none;">
   <h2>for you 💌</h2>
-
   <div class="cute-player">
     <p>🎵 Now playing: Do It Like Ya</p>
     <audio id="birthday-music" controls>
@@ -254,10 +219,8 @@ audio {
       Your browser does not support the audio element.
     </audio>
   </div>
-
   <div class="letter">
     <p>
-      happy 18th birthday 💖<br><br>
       youuuu did it! you're officially an adult now.<br><br>
       you can now put "mdni" on your bio🥺<br><br>
       honestly i'm so proud of you and i'm so grateful i got to be your friend ✨<br><br>
@@ -267,7 +230,7 @@ audio {
       i hope alll your dreams come true <br><br>
       i'm still not amazing at making this but i put blood sweat and tears into it <br><br>
       i'm not good with words so i hope you can see how much i really like u <br><br>
-      and appreciate you as a friend 
+      and appreciate you as a friend
     </p>
   </div>
 </section>
@@ -276,36 +239,46 @@ audio {
 let input = "";
 
 function press(num) {
-  if (input.length < 4) {
-    input += num;
-    document.getElementById("display").value = input;
-  }
+  if (input.length < 4) { input += num; document.getElementById("display").value = input; }
 }
-
-function deleteLast() {
-  input = input.slice(0, -1);
-  document.getElementById("display").value = input;
-}
+function deleteLast() { input = input.slice(0,-1); document.getElementById("display").value = input; }
 
 function checkPassword() {
-  if (input === "0222") {
-    document.body.style.overflow = "auto"; // unlock scroll
-    document.getElementById("lock-screen").style.display = "none";
+  if(input==="0222"){
+    document.body.style.overflow="auto";
+    document.getElementById("lock-screen").style.display="none";
+    
+    // show gallery + music
+    const gallery=document.getElementById("gallery");
+    gallery.style.display="block"; gallery.classList.add("fade-in");
+    const music=document.getElementById("music-section");
+    music.style.display="block"; music.classList.add("fade-in");
+    window.scrollTo(0,0);
 
-    const gallery = document.getElementById("gallery");
-    gallery.style.display = "block";
-    gallery.classList.add("fade-in");
+    // 🎉 trigger confetti
+    for(let i=0;i<100;i++){ 
+      const c=document.createElement("div"); 
+      c.className="confetti"; 
+      c.style.left=Math.random()*100+"vw"; 
+      c.style.backgroundColor=["#ff6eb4","#ffd6e8","#e8ddff","#d6f4ff","#fff68f"][Math.floor(Math.random()*5)]; 
+      c.style.animationDuration= (2 + Math.random()*2) + "s";
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4000);
+    }
 
-    const musicSection = document.getElementById("music-section");
-    musicSection.style.display = "block";
-    musicSection.classList.add("fade-in");
+    // 💖 floating hearts
+    for(let i=0;i<30;i++){
+      const h=document.createElement("div");
+      h.className="heart";
+      h.style.left=Math.random()*100+"vw";
+      h.style.animationDuration=(3+Math.random()*2)+"s";
+      h.style.width=(10+Math.random()*10)+"px";
+      h.style.height=h.style.width;
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),4000);
+    }
 
-    window.scrollTo(0, 0);
-  } else {
-    alert("wrong code 💔");
-    input = "";
-    document.getElementById("display").value = "";
-  }
+  } else { alert("wrong code 💔"); input=""; document.getElementById("display").value=""; }
 }
 </script>
 
