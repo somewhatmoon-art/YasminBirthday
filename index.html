@@ -22,16 +22,15 @@ body {
   background: linear-gradient(135deg, var(--pink), var(--lavender), var(--blue));
   color: var(--text);
   text-align: center;
-  overflow: hidden; /* 🔒 locked initially */
+  overflow: hidden;
 }
 
-/* 🌸 sections */
 section {
   min-height: 100vh;
   padding: 40px 20px;
 }
 
-/* 🔢 LOCK SCREEN */
+/* 🔒 LOCK SCREEN */
 #lock-screen {
   display: flex;
   flex-direction: column;
@@ -42,7 +41,6 @@ h2 {
   font-weight: 500;
 }
 
-/* input display */
 #display {
   font-size: 2rem;
   margin: 20px auto;
@@ -56,7 +54,6 @@ h2 {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* keypad */
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 80px);
@@ -80,7 +77,7 @@ h2 {
   transform: scale(1.1);
 }
 
-/* 🖼️ gallery */
+/* 🖼️ GALLERY */
 #gallery {
   display: none;
 }
@@ -91,10 +88,16 @@ h2 {
   gap: 12px;
 }
 
-.grid img {
-  width: 100%;
+.polaroid {
+  background: white;
+  padding: 10px;
   border-radius: 18px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 12px;
   transition: 0.3s;
 }
 
@@ -102,7 +105,6 @@ h2 {
   transform: scale(1.05);
 }
 
-/* swipe hint */
 .swipe-text {
   margin-top: 20px;
   font-size: 1.1rem;
@@ -115,7 +117,7 @@ h2 {
   50% {transform: translateY(-10px);}
 }
 
-/* 🎵 music section */
+/* 🎵 MUSIC */
 #music-section {
   background: var(--white);
   backdrop-filter: blur(15px);
@@ -127,7 +129,7 @@ audio {
   margin: 20px 0;
 }
 
-/* 💌 letter */
+/* 💌 LETTER */
 .letter {
   max-width: 420px;
   margin: auto;
@@ -138,7 +140,7 @@ audio {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* ✨ fade animation */
+/* ✨ ANIMATION */
 .fade-in {
   animation: fade 1s ease;
 }
@@ -175,38 +177,40 @@ audio {
 </section>
 
 <!-- 🖼️ GALLERY -->
+<section id="gallery">
+  <div class="grid">
 
-  <div class="polaroid">
-    <img src="yasmin.jpg">
-    <p>From this </p>
+    <div class="polaroid">
+      <img src="yasmin.jpg" alt="photo">
+      <p>From this</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="yasminn.jpg" alt="photo">
+      <p>to this</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="yasminnn.jpg" alt="photo">
+      <p>this as well >>></p>
+    </div>
+
+    <div class="polaroid">
+      <img src="yasminnnn.jpg" alt="photo">
+      <p>to this too then</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="yasminnnnn.jpg" alt="photo">
+      <p>and this</p>
+    </div>
+
+    <div class="polaroid">
+      <img src="yasminnnnnn.jpg" alt="photo">
+      <p>happy 18th 🎂✨</p>
+    </div>
+
   </div>
-
-  <div class="polaroid">
-    <img src="yasminn.jpg">
-    <p>to this </p>
-  </div>
-
-  <div class="polaroid">
-    <img src="yasminnn.jpg">
-    <p> this as well >>></p>
-  </div>
-
-  <div class="polaroid">
-    <img src="yasminnnn.jpg">
-    <p>to this too then </p>
-  </div>
-
-  <div class="polaroid">
-    <img src="yasminnnnn.jpg">
-    <p> and this </p>
-  </div>
-
-  <div class="polaroid">
-    <img src="yasminnnnnn.jpg">
-    <p>happy 18th 🎂✨</p>
-  </div>
-
-</div>
 
   <p class="swipe-text">⬆️ swipe up</p>
 </section>
@@ -233,7 +237,6 @@ audio {
 <script>
 let input = "";
 
-/* press number */
 function press(num) {
   if (input.length < 4) {
     input += num;
@@ -241,17 +244,14 @@ function press(num) {
   }
 }
 
-/* delete last digit */
 function deleteLast() {
   input = input.slice(0, -1);
   document.getElementById("display").value = input;
 }
 
-/* check password */
 function checkPassword() {
   if (input === "0222") {
-    document.body.style.overflow = "auto"; // unlock scroll
-
+    document.body.style.overflow = "auto";
     document.getElementById("lock-screen").style.display = "none";
 
     const gallery = document.getElementById("gallery");
