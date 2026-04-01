@@ -4,24 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy 18th 💖</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Permanent+Marker&family=Indie+Flower&display=swap" rel="stylesheet">
 <style>
 :root {
   --pink: #ffd6e8;
   --lavender: #e8ddff;
   --blue: #d6f4ff;
-  --white: rgba(255,255,255,0.8);
+  --cream: #fffaf0;
   --text: #555;
   --player-pink: #ff6eb4;
+  --tape: #fff0f5;
 }
 
+/* GLOBAL */
 body {
   margin:0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--blue));
+  background: var(--cream);
   color: var(--text);
   text-align:center;
   overflow-x:hidden;
+  position:relative;
 }
 
 /* SECTIONS */
@@ -37,7 +40,7 @@ section {
 /* LOCK SCREEN */
 #lock-screen h2 {
   font-family:'Permanent Marker', cursive;
-  font-size:2rem;
+  font-size:2.5rem;
   margin-bottom:30px;
   color:var(--player-pink);
   text-shadow: 1px 1px 5px #fff;
@@ -47,13 +50,12 @@ section {
   font-size:2rem;
   width:180px;
   padding:15px;
-  border:none;
-  border-radius:25px;
-  background:var(--white);
-  backdrop-filter:blur(12px);
-  box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  border: 3px dashed var(--pink);
+  border-radius:20px;
+  background: var(--tape);
   text-align:center;
   margin-bottom:30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .keypad {
@@ -61,23 +63,28 @@ section {
   grid-template-columns:repeat(3, 80px);
   gap:15px;
   justify-content:center;
+  padding:20px;
+  border: 2px dotted var(--lavender);
+  border-radius:25px;
+  background: var(--cream);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .keypad button {
   padding:18px;
   font-size:1.3rem;
-  border-radius:20px;
-  border:none;
-  background:var(--white);
-  backdrop-filter:blur(12px);
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  border-radius:25px;
+  border:2px solid var(--pink);
+  background: var(--pink);
+  color:white;
+  font-family:'Indie Flower', cursive;
   cursor:pointer;
   transition: all 0.25s ease;
+  position:relative;
 }
-
 .keypad button:hover {
-  transform:scale(1.1) rotate(-2deg);
-  box-shadow:0 8px 22px rgba(0,0,0,0.15);
+  transform:scale(1.1) rotate(-3deg);
+  box-shadow:0 6px 20px rgba(0,0,0,0.15);
 }
 
 /* POLAROID GALLERY */
@@ -97,40 +104,44 @@ section {
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
   transform:rotate(var(--rotate));
   transition:0.3s;
+  position:relative;
 }
 
-.polaroid:nth-child(1){--rotate:-6deg;}
-.polaroid:nth-child(2){--rotate:4deg;}
-.polaroid:nth-child(3){--rotate:-3deg;}
-.polaroid:nth-child(4){--rotate:5deg;}
-.polaroid:nth-child(5){--rotate:-4deg;}
-.polaroid:nth-child(6){--rotate:3deg;}
-
+.polaroid::before{
+  content:'';
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  width:40px;
+  height:15px;
+  background:var(--pink);
+  transform:rotate(-15deg);
+  border-radius:3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 .polaroid img{
   width:100%;
   border-radius:10px;
   transition: transform 0.3s;
 }
-
 .polaroid p{
   font-size:0.85rem;
   margin-top:8px;
   font-family:"Permanent Marker", cursive;
   color:var(--player-pink);
 }
-
 .polaroid:hover {
   transform:scale(1.15) rotate(0deg);
   z-index:10;
 }
 
+/* SWIPE FLOAT */
 .swipe-text{
   margin-top:30px;
   font-size:1.2rem;
   opacity:0.8;
   animation: float 1.5s infinite;
 }
-
 @keyframes float{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-12px);}
@@ -140,25 +151,16 @@ section {
 .cute-player {
   max-width:340px;
   margin:30px auto;
-  background:var(--white);
-  backdrop-filter:blur(12px);
+  background: var(--tape);
   border-radius:25px;
   padding:18px;
   box-shadow:0 8px 22px rgba(0,0,0,0.12);
   text-align:center;
   font-family:"Permanent Marker", cursive;
+  border:2px dashed var(--player-pink);
 }
-
-.cute-player p {
-  margin-bottom:12px;
-  font-size:1rem;
-  color:var(--player-pink);
-}
-
-audio {
-  width:100%;
-  border-radius:12px;
-}
+.cute-player p { margin-bottom:12px; font-size:1rem; color:var(--player-pink);}
+audio { width:100%; border-radius:12px; }
 
 /* LETTER */
 .letter {
@@ -166,33 +168,39 @@ audio {
   margin:30px auto;
   padding:25px;
   border-radius:25px;
-  background:var(--white);
+  background: var(--tape);
   box-shadow:0 8px 22px rgba(0,0,0,0.12);
   line-height:1.6;
   font-family:"Permanent Marker", cursive;
   font-size:0.95rem;
+  border:2px dotted var(--lavender);
 }
 
-/* HEARTS */
-.heart{
+/* HEARTS & STARS */
+.heart, .star{
   position:absolute;
   width:20px;
   height:20px;
-  background:pink;
-  transform:rotate(45deg);
-  border-radius:50%;
   animation:floatHeart linear infinite;
+  z-index:5;
 }
 .heart::before,.heart::after{
   content:"";
   position:absolute;
   width:20px;
   height:20px;
-  background:pink;
   border-radius:50%;
 }
-.heart::before{top:-10px; left:0;}
-.heart::after{left:10px; top:0;}
+.heart{
+  background:pink;
+  transform:rotate(45deg);
+}
+.heart::before{top:-10px; left:0; background:pink;}
+.heart::after{left:10px; top:0; background:pink;}
+.star{
+  background:yellow;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
 @keyframes floatHeart{
   0%{transform:translateY(0) rotate(45deg); opacity:1;}
   100%{transform:translateY(-700px) rotate(45deg); opacity:0;}
@@ -212,17 +220,13 @@ audio {
   to{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* ANIMATIONS */
+/* FADE-IN */
 .fade-in{animation:fade 1s ease forwards;}
-@keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
+@keyframes fade{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 </style>
 </head>
 <body>
 
-<!-- LOCK SCREEN -->
 <section id="lock-screen">
   <h2>enter the secret code 💌</h2>
   <input type="text" id="display" disabled placeholder="••••">
@@ -242,7 +246,6 @@ audio {
   </div>
 </section>
 
-<!-- POLAROID GALLERY -->
 <section id="gallery" style="display:none;">
   <h2>our memories 💖</h2>
   <div class="polaroid-gallery">
@@ -256,7 +259,6 @@ audio {
   <p class="swipe-text">⬆️ swipe up</p>
 </section>
 
-<!-- MUSIC + LETTER -->
 <section id="music-section" style="display:none;">
   <h2>for you 💌</h2>
   <div class="cute-player">
