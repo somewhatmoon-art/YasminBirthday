@@ -3,34 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday zaina </title>
+<title>Happy 18th 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f7f7fb;
-  text-align: center;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+:root {
+  --pink: #ffd6e8;
+  --lavender: #e8ddff;
+  --blue: #d6f4ff;
+  --white: rgba(255,255,255,0.7);
+  --text: #555;
 }
 
-/* LOCK SCREEN */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, var(--pink), var(--lavender), var(--blue));
+  color: var(--text);
+  text-align: center;
+  overflow: hidden; /* 🔒 locked initially */
+}
+
+/* 🌸 sections */
+section {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* 🔢 LOCK SCREEN */
 #lock-screen {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-#display {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  text-align: center;
-  border: none;
-  background: transparent;
+h2 {
+  font-weight: 500;
 }
 
+/* input display */
+#display {
+  font-size: 2rem;
+  margin: 20px auto;
+  padding: 10px;
+  width: 160px;
+  text-align: center;
+  border: none;
+  border-radius: 15px;
+  background: var(--white);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* keypad */
 .keypad {
   display: grid;
   grid-template-columns: repeat(3, 80px);
@@ -39,72 +65,98 @@ body {
 }
 
 .keypad button {
-  padding: 20px;
-  font-size: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  background: white;
+  padding: 18px;
+  font-size: 1.3rem;
+  border-radius: 18px;
+  border: none;
+  background: var(--white);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .keypad button:hover {
-  background: #eee;
+  transform: scale(1.1);
 }
 
-/* GALLERY */
+/* 🖼️ gallery */
 #gallery {
   display: none;
-  padding: 20px;
-  min-height: 100vh;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .grid img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 18px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.3s;
 }
 
-/* SWIPE TEXT */
+.grid img:hover {
+  transform: scale(1.05);
+}
+
+/* swipe hint */
 .swipe-text {
   margin-top: 20px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   opacity: 0.7;
+  animation: float 1.5s infinite;
 }
 
-/* MUSIC SECTION */
+@keyframes float {
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-10px);}
+}
+
+/* 🎵 music section */
 #music-section {
-  padding: 50px 20px;
-  background: #ffffff;
-  min-height: 100vh;
+  background: var(--white);
+  backdrop-filter: blur(15px);
+  border-radius: 30px 30px 0 0;
+  margin-top: 40px;
 }
 
 audio {
   margin: 20px 0;
 }
 
-/* FADE IN */
+/* 💌 letter */
+.letter {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ✨ fade animation */
 .fade-in {
-  animation: fade 1s ease-in-out;
+  animation: fade 1s ease;
 }
 
 @keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔢 LOCK SCREEN -->
-<div id="lock-screen">
-  <h2>Enter Code 💌</h2>
-  <input type="password" id="display" disabled>
+<!-- 🔒 LOCK SCREEN -->
+<section id="lock-screen">
+  <h2>enter the secret code 💌</h2>
+
+  <input type="text" id="display" disabled placeholder="••••">
 
   <div class="keypad">
     <button onclick="press('1')">1</button>
@@ -116,15 +168,15 @@ audio {
     <button onclick="press('7')">7</button>
     <button onclick="press('8')">8</button>
     <button onclick="press('9')">9</button>
-    <button onclick="clearInput()">#</button>
+    <button onclick="deleteLast()">⌫</button>
     <button onclick="press('0')">0</button>
-    <button onclick="checkPassword()">*</button>
+    <button onclick="checkPassword()">♡</button>
   </div>
-</div>
+</section>
 
 <!-- 🖼️ GALLERY -->
-<div id="gallery">
-  <h2> Small Duo lane i have bad memory </h2>
+<section id="gallery">
+  <h2>our memories 💖</h2>
 
   <div class="grid">
     <img src="img1.jpg">
@@ -135,28 +187,32 @@ audio {
     <img src="img6.jpg">
   </div>
 
-  <p class="swipe-text">⬆️ Swipe up</p>
-</div>
+  <p class="swipe-text">⬆️ swipe up</p>
+</section>
 
-<!-- 🎵 you are olddddd  -->
-<div id="music-section">
-  <h2>For You </h2>
+<!-- 🎵 MUSIC + LETTER -->
+<section id="music-section">
+  <h2>for you 💌</h2>
 
   <audio controls autoplay loop>
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
-  <p>
-    Happy Birthday 💖<br><br>
-    I hope today is as special as you are.<br>
-    Thank you for being in my life.<br><br>
-    I made this just for you 🎂✨
-  </p>
-</div>
+  <div class="letter">
+    <p>
+      happy 18th birthday 💖<br><br>
+      you made it to such a special age and i’m so proud of you.<br><br>
+      thank you for being such an important part of my life 🥺<br><br>
+      i hope this little surprise made you smile ✨<br><br>
+      love you always 💕
+    </p>
+  </div>
+</section>
 
 <script>
 let input = "";
 
+/* press number */
 function press(num) {
   if (input.length < 4) {
     input += num;
@@ -164,22 +220,28 @@ function press(num) {
   }
 }
 
-function clearInput() {
-  input = "";
-  document.getElementById("display").value = "";
+/* delete last digit */
+function deleteLast() {
+  input = input.slice(0, -1);
+  document.getElementById("display").value = input;
 }
 
+/* check password */
 function checkPassword() {
   if (input === "0222") {
+    document.body.style.overflow = "auto"; // unlock scroll
+
     document.getElementById("lock-screen").style.display = "none";
+
     const gallery = document.getElementById("gallery");
     gallery.style.display = "block";
     gallery.classList.add("fade-in");
 
     window.scrollTo(0, 0);
   } else {
-    alert("Wrong code 💔");
-    clearInput();
+    alert("wrong code 💔");
+    input = "";
+    document.getElementById("display").value = "";
   }
 }
 </script>
