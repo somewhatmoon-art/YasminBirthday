@@ -3,30 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy 18th Birthday Yasmin </title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Permanent+Marker&family=Indie+Flower&display=swap" rel="stylesheet">
+<title>Happy 18th 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
 :root {
-  --pink: #ffd6e8;
-  --lavender: #e8ddff;
-  --blue: #d6f4ff;
-  --yellow: #fff68f;
-  --cream: #fffaf0;
-  --text: #555;
+  --deadpool-red: #ff0000;
+  --deadpool-black: #1a1a1a;
+  --paper-white: #fff8f2;
+  --gray-text: #333;
   --player-pink: #ff6eb4;
-  --tape: #fff0f5;
-  --doodle-gray: #aaa;
 }
 
 /* GLOBAL */
 body {
   margin:0;
   font-family: 'Poppins', sans-serif;
-  background: var(--cream);
-  color: var(--text);
+  font-size:16px;
+  line-height:1.6;
+  color: var(--gray-text);
   text-align:center;
   overflow-x:hidden;
   position:relative;
+  transition: background 1s ease;
 }
 
 /* SECTIONS */
@@ -38,28 +36,32 @@ section {
   align-items:center;
   justify-content:center;
   position:relative;
+  transition: background 1s ease;
+}
+
+/* HEADINGS */
+h2 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.5rem;
+  color: var(--deadpool-red);
+  text-shadow: 1px 1px var(--deadpool-black);
+  margin-bottom:30px;
 }
 
 /* LOCK SCREEN */
 #lock-screen h2 {
-  font-family:'Permanent Marker', cursive;
-  font-size:2.5rem;
-  margin-bottom:30px;
-  color:var(--player-pink);
-  text-shadow: 1px 1px 2px #fff;
+  transform: rotate(-2deg);
 }
 
 #display {
   font-size:2rem;
   width:180px;
   padding:15px;
-  border: 3px dashed var(--doodle-gray);
+  border: 3px dashed var(--deadpool-black);
   border-radius:15px;
-  background: var(--tape);
+  background: var(--paper-white);
   text-align:center;
   margin-bottom:30px;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
-  font-family:'Indie Flower', cursive;
 }
 
 .keypad {
@@ -68,30 +70,33 @@ section {
   gap:15px;
   justify-content:center;
   padding:20px;
-  border: 2px dotted var(--doodle-gray);
+  border: 2px dotted var(--deadpool-black);
   border-radius:25px;
-  background: var(--cream);
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.05);
+  background: var(--paper-white);
 }
 
 .keypad button {
   padding:18px;
-  font-size:1.4rem;
+  font-size:1.3rem;
   border-radius:20px;
-  border:2px solid var(--doodle-gray);
-  background: var(--pink);
+  border:2px solid var(--deadpool-black);
+  background: var(--player-pink);
   color:white;
-  font-family:'Indie Flower', cursive;
   cursor:pointer;
-  transition: all 0.2s ease;
-  position:relative;
+  transition: all 0.25s ease;
+  font-family:'Permanent Marker', cursive;
 }
 .keypad button:hover {
-  transform:scale(1.1) rotate(-3deg);
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow:2px 2px 10px rgba(0,0,0,0.3);
 }
 
 /* POLAROID GALLERY */
+#gallery {
+  background: linear-gradient(120deg, #ffd6a5, #ff9e9d, #ffc3a0); /* sunset vibes */
+  transition: background 1s ease;
+}
+
 .polaroid-gallery {
   display:flex;
   flex-wrap:wrap;
@@ -104,39 +109,28 @@ section {
 .polaroid {
   width:160px;
   background:white;
-  padding:10px 12px 20px;
-  border-radius:12px;
-  box-shadow:4px 4px 12px rgba(0,0,0,0.15);
+  padding:12px 12px 20px;
+  border-radius:15px;
+  box-shadow:4px 4px 12px rgba(0,0,0,0.2);
   transform:rotate(var(--rotate));
   transition:0.3s;
   position:relative;
-  font-family:'Indie Flower', cursive;
-}
-
-/* washi tape on top of polaroids */
-.polaroid::before{
-  content:'';
-  position:absolute;
-  top:-8px;
-  left:10px;
-  width:50px;
-  height:12px;
-  background:var(--yellow);
-  border-radius:3px;
-  transform:rotate(-10deg);
-  box-shadow:1px 1px 3px rgba(0,0,0,0.1);
+  font-family:'Poppins', sans-serif;
+  border:2px dashed var(--deadpool-black);
 }
 
 .polaroid img{
   width:100%;
-  border-radius:8px;
+  border-radius:10px;
   transition: transform 0.3s;
 }
 
 .polaroid p{
-  font-size:0.85rem;
-  margin-top:6px;
+  font-size:0.9rem;
+  margin-top:8px;
+  font-family:"Poppins", sans-serif;
   color:var(--player-pink);
+  text-align:center;
 }
 
 .polaroid:hover {
@@ -145,19 +139,21 @@ section {
 }
 
 /* RANDOM ROTATIONS */
-.polaroid:nth-child(1){--rotate:-8deg;}
-.polaroid:nth-child(2){--rotate:5deg;}
+.polaroid:nth-child(1){--rotate:-6deg;}
+.polaroid:nth-child(2){--rotate:4deg;}
 .polaroid:nth-child(3){--rotate:-3deg;}
-.polaroid:nth-child(4){--rotate:7deg;}
-.polaroid:nth-child(5){--rotate:-5deg;}
-.polaroid:nth-child(6){--rotate:4deg;}
+.polaroid:nth-child(4){--rotate:5deg;}
+.polaroid:nth-child(5){--rotate:-4deg;}
+.polaroid:nth-child(6){--rotate:3deg;}
 
-/* SWIPE FLOAT */
+/* SWIPE TEXT */
 .swipe-text{
   margin-top:30px;
   font-size:1.2rem;
-  opacity:0.8;
+  opacity:0.9;
   animation: float 1.5s infinite;
+  color: var(--deadpool-red);
+  font-weight:bold;
 }
 @keyframes float{
   0%,100%{transform:translateY(0);}
@@ -165,63 +161,75 @@ section {
 }
 
 /* MUSIC PLAYER */
+#music-section {
+  background: linear-gradient(180deg, #0b0c27, #1a1f4b); /* starry night */
+  color: #fff;
+  transition: background 1s ease, color 1s ease;
+  position:relative;
+  overflow:hidden;
+}
+
 .cute-player {
   max-width:340px;
   margin:30px auto;
-  background: var(--tape);
+  background: rgba(255,255,255,0.05);
   border-radius:25px;
   padding:18px;
-  box-shadow:4px 4px 12px rgba(0,0,0,0.12);
   text-align:center;
-  font-family:"Permanent Marker", cursive;
-  border:2px dashed var(--doodle-gray);
+  font-family:"Poppins", sans-serif;
+  border:2px dashed var(--deadpool-red);
+  color:white;
 }
-.cute-player p { margin-bottom:12px; font-size:1rem; color:var(--player-pink);}
-audio { width:100%; border-radius:12px; }
+
+.cute-player p {
+  margin-bottom:12px;
+  font-size:1rem;
+  color:var(--player-pink);
+}
+
+audio {
+  width:100%;
+  border-radius:12px;
+}
 
 /* LETTER */
 .letter {
   max-width:450px;
   margin:30px auto;
   padding:25px;
-  border-radius:20px;
-  background: var(--tape);
-  box-shadow:4px 4px 12px rgba(0,0,0,0.12);
-  line-height:1.6;
-  font-family:"Permanent Marker", cursive;
-  font-size:0.95rem;
-  border:2px dotted var(--doodle-gray);
-  text-align:left;
+  border-radius:25px;
+  background: rgba(255,255,255,0.05);
+  line-height:1.7;
+  font-family:"Poppins", sans-serif;
+  font-size:1rem;
+  border:2px dashed var(--deadpool-red);
+  color:white;
 }
 
-/* HEARTS & STARS DOODLES */
-.heart, .star{
-  position:absolute;
-  width:20px;
-  height:20px;
-  animation:floatHeart linear infinite;
-  z-index:5;
-}
-.heart::before,.heart::after{
-  content:"";
-  position:absolute;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-}
-.heart{
-  background:pink;
-  transform:rotate(45deg);
-}
-.heart::before{top:-10px; left:0; background:pink;}
-.heart::after{left:10px; top:0; background:pink;}
+/* STARS */
 .star{
-  background:yellow;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s linear infinite;
 }
-@keyframes floatHeart{
-  0%{transform:translateY(0) rotate(45deg); opacity:1;}
-  100%{transform:translateY(-700px) rotate(45deg); opacity:0;}
+@keyframes twinkle{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+/* DOODLES */
+.doodle{
+  position:absolute;
+  font-size:24px;
+  color: var(--deadpool-red);
+  animation: floatDoodle linear infinite;
+}
+@keyframes floatDoodle {
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-700px);}
 }
 
 /* CONFETTI */
@@ -229,7 +237,7 @@ audio { width:100%; border-radius:12px; }
   position:fixed;
   width:10px;
   height:10px;
-  background-color:#ff6eb4;
+  background-color:var(--deadpool-red);
   z-index:9999;
   top:-10px;
   animation:fall 3s linear forwards;
@@ -245,6 +253,7 @@ audio { width:100%; border-radius:12px; }
 </head>
 <body>
 
+<!-- LOCK SCREEN -->
 <section id="lock-screen">
   <h2>enter the secret code 💌</h2>
   <input type="text" id="display" disabled placeholder="••••">
@@ -264,6 +273,7 @@ audio { width:100%; border-radius:12px; }
   </div>
 </section>
 
+<!-- POLAROID GALLERY -->
 <section id="gallery" style="display:none;">
   <h2>our memories 💖</h2>
   <div class="polaroid-gallery">
@@ -277,6 +287,7 @@ audio { width:100%; border-radius:12px; }
   <p class="swipe-text">⬆️ swipe up</p>
 </section>
 
+<!-- MUSIC + LETTER -->
 <section id="music-section" style="display:none;">
   <h2>for you 💌</h2>
   <div class="cute-player">
@@ -314,6 +325,19 @@ function checkPassword(){
     const music=document.getElementById("music-section"); music.style.display="block"; music.classList.add("fade-in");
     window.scrollTo(0,0);
 
+    // add stars for night section
+    const musicSection = document.getElementById("music-section");
+    for(let i=0;i<50;i++){
+      const star=document.createElement("div");
+      star.className="star";
+      star.style.left=Math.random()*100+"vw";
+      star.style.top=Math.random()*100+"vh";
+      star.style.width=star.style.height=(1+Math.random()*3)+"px";
+      star.style.animationDuration=(1+Math.random()*2)+"s";
+      musicSection.appendChild(star);
+    }
+
+    // confetti + doodles
     let endTime=Date.now()+10000;
     let interval=setInterval(()=>{
       if(Date.now()>endTime){ clearInterval(interval); return; }
@@ -324,14 +348,15 @@ function checkPassword(){
       c.style.animationDuration=(2+Math.random()*2)+"s"; document.body.appendChild(c);
       setTimeout(()=>c.remove(),4000);
 
-      const h=document.createElement("div"); h.className="heart";
+      const h=document.createElement("div"); h.className="doodle";
+      h.textContent=["💀","⚔️","☠️"][Math.floor(Math.random()*3)];
       h.style.left=Math.random()*100+"vw";
       h.style.animationDuration=(3+Math.random()*2)+"s";
-      h.style.width=(10+Math.random()*10)+"px"; h.style.height=h.style.width;
+      h.style.fontSize=(10+Math.random()*12)+"px";
       document.body.appendChild(h); setTimeout(()=>h.remove(),4000);
     },150);
 
-  } else { alert("wrong code 💔"); input=""; document.getElementById("display").value=""; }
+  } else { alert("Try putting in your day & my day"); input=""; document.getElementById("display").value=""; }
 }
 </script>
 </body>
