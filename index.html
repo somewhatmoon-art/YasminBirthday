@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday zaina </title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f7fb;
+  text-align: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* LOCK SCREEN */
+#lock-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#display {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  gap: 15px;
+  justify-content: center;
+}
+
+.keypad button {
+  padding: 20px;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.keypad button:hover {
+  background: #eee;
+}
+
+/* GALLERY */
+#gallery {
+  display: none;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* SWIPE TEXT */
+.swipe-text {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+/* MUSIC SECTION */
+#music-section {
+  padding: 50px 20px;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+audio {
+  margin: 20px 0;
+}
+
+/* FADE IN */
+.fade-in {
+  animation: fade 1s ease-in-out;
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔢 LOCK SCREEN -->
+<div id="lock-screen">
+  <h2>Enter Code 💌</h2>
+  <input type="password" id="display" disabled>
+
+  <div class="keypad">
+    <button onclick="press('1')">1</button>
+    <button onclick="press('2')">2</button>
+    <button onclick="press('3')">3</button>
+    <button onclick="press('4')">4</button>
+    <button onclick="press('5')">5</button>
+    <button onclick="press('6')">6</button>
+    <button onclick="press('7')">7</button>
+    <button onclick="press('8')">8</button>
+    <button onclick="press('9')">9</button>
+    <button onclick="clearInput()">#</button>
+    <button onclick="press('0')">0</button>
+    <button onclick="checkPassword()">*</button>
+  </div>
+</div>
+
+<!-- 🖼️ GALLERY -->
+<div id="gallery">
+  <h2> Small Duo lane i have bad memory </h2>
+
+  <div class="grid">
+    <img src="img1.jpg">
+    <img src="img2.jpg">
+    <img src="img3.jpg">
+    <img src="img4.jpg">
+    <img src="img5.jpg">
+    <img src="img6.jpg">
+  </div>
+
+  <p class="swipe-text">⬆️ Swipe up</p>
+</div>
+
+<!-- 🎵 you are olddddd  -->
+<div id="music-section">
+  <h2>For You </h2>
+
+  <audio controls autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <p>
+    Happy Birthday 💖<br><br>
+    I hope today is as special as you are.<br>
+    Thank you for being in my life.<br><br>
+    I made this just for you 🎂✨
+  </p>
+</div>
+
+<script>
+let input = "";
+
+function press(num) {
+  if (input.length < 4) {
+    input += num;
+    document.getElementById("display").value = input;
+  }
+}
+
+function clearInput() {
+  input = "";
+  document.getElementById("display").value = "";
+}
+
+function checkPassword() {
+  if (input === "0222") {
+    document.getElementById("lock-screen").style.display = "none";
+    const gallery = document.getElementById("gallery");
+    gallery.style.display = "block";
+    gallery.classList.add("fade-in");
+
+    window.scrollTo(0, 0);
+  } else {
+    alert("Wrong code 💔");
+    clearInput();
+  }
+}
+</script>
+
+</body>
+</html>
